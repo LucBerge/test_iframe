@@ -25,12 +25,7 @@
             const button = document.querySelector('#myButton');
             button.addEventListener('click', () => {
                 alert('Button Clicked!');
-                const event = new CustomEvent('post-message', {
-                    detail: {
-                        event: 'unload-bookmarklet'
-                    }
-                });
-                this.dispatchEvent(event);
+                parent.closeIFrame();
             });
         });
     </script>

@@ -22,14 +22,15 @@
         }
     </style>
     <script>
-    window.addEventListener('message', function(e) {
-        var someIframe = window.parent.document.getElementById('iframeid');
-        someIframe.parentNode.removeChild(window.parent.document.getElementById('iframeid'));
-    });
+        function closeIFrame() {
+            const iframe = document.getElementById('iframeid');
+            iframe.style.display = 'none';
+            alert('iFrame closed!');
+        }
     </script>
 </head>
 <body>
     <label>Index page</label>
-    <iframe id="iframeid" src="iframe.html" title="Centered iFrame"></iframe>
+    <iframe id="iframeid" src="https://lucberge.github.io/test_iframe/iframe.html" title="Centered iFrame"></iframe>
 </body>
 </html>
