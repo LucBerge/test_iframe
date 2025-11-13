@@ -22,16 +22,27 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const button = document.querySelector('#myButton');
-            button.addEventListener('click', () => {
+            const closeButton = document.querySelector('#closeButton');
+            closeButton.addEventListener('click', () => {
                 alert('Button Clicked!');
                 parent.closeIFrame();
+            });
+
+            const resizePlusButton = document.querySelector('#resizePlusButton');
+            resizePlusButton.addEventListener('click', () => {
+                parent.resizeIFrame(700, 900);
+            });
+
+            const resizeMinusButton = document.querySelector('#resizeMinusButton');
+            resizeMinusButton.addEventListener('click', () => {
+                parent.resizeIFrame(500, 700);
             });
         });
     </script>
 </head>
 <body>
-    <label>Iframe page</label>
-    <button id="myButton">Click Me</button>
+    <button id="closeButton">Close the iframe</button>
+    <button id="resizePlusButton">Resize +</button>
+    <button id="resizeMinusButton">Resize -</button>
 </body>
 </html>

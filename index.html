@@ -22,6 +22,11 @@
         }
     </style>
     <script>
+        function resizeIFrame(height, width) {
+            const iframe = document.getElementById('iframeid');
+            iframe.style.width = width + 'px';
+            iframe.style.height = height + 'px';
+        }
         function closeIFrame() {
             const iframe = document.getElementById('iframeid');
             iframe.style.display = 'none';
@@ -30,7 +35,6 @@
     </script>
 </head>
 <body>
-    <label>Index page</label>
     <iframe id="iframeid" src="https://lucberge.github.io/test_iframe/iframe.html" title="Centered iFrame"></iframe>
 </body>
 </html>
