@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page with Centered iFrame</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        iframe {
+            width: 800px;
+            height: 600px;
+            border: 2px solid #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+    window.addEventListener('message', function(e) {
+        var someIframe = window.parent.document.getElementById('iframeid');
+        someIframe.parentNode.removeChild(window.parent.document.getElementById('iframeid'));
+    });
+    </script>
+</head>
+<body>
+    <iframe id="iframeid" ="iframe.html" title="Centered iFrame"></iframe>
+</body>
+</html>
