@@ -30,11 +30,18 @@
         function closeIFrame() {
             const iframe = document.getElementById('iframeid');
             iframe.style.display = 'none';
-            alert('iFrame closed!');
         }
+        document.addEventListener('DOMContentLoaded', () => {
+            const closeButton = document.querySelector('#openButton');
+            closeButton.addEventListener('click', () => {
+                const iframe = document.getElementById('iframeid');
+                iframe.style.display = 'flex';
+            });
+        });
     </script>
 </head>
 <body>
+    <button id="openButton">Open the iframe</button>
     <iframe id="iframeid" src="https://lucberge.github.io/test_iframe/iframe.html" title="Centered iFrame"></iframe>
 </body>
 </html>
