@@ -38,12 +38,11 @@
             width: 800px;
             height: 600px;
             border: 0px solid #333;
-            border-radius: 30px;
         }
     </style>
     <script>
-        const containerIframe = document.getElementById('container_iframe');
-        const iframe = document.getElementById('iframeid');
+        let containerIframe;
+        let iframe;
 
         function resizeIFrame(width, height) {
             iframe.style.width = width;
@@ -58,6 +57,9 @@
             containerIframe.style.display = 'flex';
         }
         document.addEventListener('DOMContentLoaded', () => {
+            containerIframe = document.getElementById('container_iframe');
+            iframe = document.getElementById('iframeid');
+            
             const closeButton = document.getElementById('openButton');
             closeButton.addEventListener('click', () => {
                 openIframe("https://lucberge.github.io/test_iframe/iframe.html");
