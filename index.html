@@ -37,6 +37,7 @@
             closeButton.addEventListener('click', () => {
                 const iframe = document.getElementById('iframeid');
                 iframe.style.display = 'flex';
+                iframe.src = "https://lucberge.github.io/test_iframe/iframe.html";
             });
 
             const inputElement = document.getElementById('input_iframe_url');
@@ -73,8 +74,10 @@
     </script>
 </head>
 <body>
-    <button id="openButton">Open the iframe</button>
-    <input id="input_iframe_url" />
-    <iframe id="iframeid" src="https://lucberge.github.io/test_iframe/iframe.html" title="Centered iFrame"></iframe>
+    <div id="actions">
+        <button id="openButton">Open default iframe</button>
+        <input id="input_iframe_url" />
+    </div>
+    <iframe id="iframeid" title="Centered iFrame"></iframe>
 </body>
 </html>
