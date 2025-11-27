@@ -55,16 +55,16 @@
                     console.log('Iframe has been closed!');
                 }
                 else if (event.data.type === 'invoice-collector-panel-search') {
-                    resizeIFrame('100vh', '100vh');
+                    resizeIFrame('100%', '100vh');
                 }
                 else if (event.data.type === 'invoice-collector-panel-collector') {
-                    resizeIFrame('100vh', '100vh');
+                    resizeIFrame('100%', '100vh');
                 }
                 else if (event.data.type === 'invoice-collector-panel-progress') {
                     resizeIFrame('500px', '500px');
                 }
-                else if (event.data.type === 'invoice-collector-panel-canva') {
-                    resizeIFrame('1200px', '900px');
+                else if (event.data.type === 'invoice-collector-panel-canvas') {
+                    resizeIFrame('1200px', '600px');
                 }
             } else {
                 console.warn('Origin not allowed:', event.origin);
