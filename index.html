@@ -74,7 +74,7 @@
         window.addEventListener('message', function(event) {
             console.log('Message received from child:', event.data, 'from origin:', event.origin);
 
-            if (event.origin === "https://lucberge.github.io" || event.origin === "https://api.invoice-collector.com") {
+            if (event.origin === "https://lucberge.github.io" || event.origin === "https://api.invoice-collector.com" || event.origin === "http://localhost:8080") {
                 if (event.data.type === 'invoice-collector-close') {
                     closeIFrame();
                 }
