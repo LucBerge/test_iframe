@@ -31,6 +31,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100%;
+            height: 100%;
         }
         iframe {
             width: 800px;
@@ -40,28 +42,29 @@
         }
     </style>
     <script>
+        const iframe = document.getElementById('iframeid');
+
         function resizeIFrame(width, height) {
-            const iframe = document.getElementById('iframeid');
             iframe.style.width = width;
             iframe.style.height = height;
         }
         function closeIFrame() {
-            const iframe = document.getElementById('iframeid');
             iframe.hidden = true;
+        }
+        function openIframe(url) {
+            iframe.src = url;
+            resizeIFrame('100%', '100%');
+            iframe.hidden = false;
         }
         document.addEventListener('DOMContentLoaded', () => {
             const closeButton = document.getElementById('openButton');
             closeButton.addEventListener('click', () => {
-                const iframe = document.getElementById('iframeid');
-                iframe.hidden = false;
-                iframe.src = "https://lucberge.github.io/test_iframe/iframe.html";
+                openIframe("https://lucberge.github.io/test_iframe/iframe.html");
             });
 
             const inputElement = document.getElementById('input_iframe_url');
             inputElement.addEventListener('change', (event) => {
-                const iframe = document.getElementById('iframeid');
-                iframe.src = event.target.value;
-                iframe.hidden = false;
+                openIframe(event.target.value);
             });
         });
 
@@ -71,13 +74,12 @@
             if (event.origin === "https://lucberge.github.io" || event.origin === "https://api.invoice-collector.com") {
                 if (event.data.type === 'invoice-collector-close') {
                     closeIFrame();
-                    console.log('Iframe has been closed!');
                 }
                 else if (event.data.type === 'invoice-collector-panel-search') {
-                    resizeIFrame('100%', '100vh');
+                    resizeIFrame('100%', '100%');
                 }
                 else if (event.data.type === 'invoice-collector-panel-collector') {
-                    resizeIFrame('100%', '100vh');
+                    resizeIFrame('100%', '100%');
                 }
                 else if (event.data.type === 'invoice-collector-panel-progress') {
                     resizeIFrame('500px', '500px');
@@ -97,7 +99,7 @@
         <input id="input_iframe_url" />
     </div>
     <div id="container_iframe">
-        <iframe id="iframeid" title="Centered iFrame" hidden></iframe>
+        <iframe id="iframeid" title="Centered iFrame" width="100%" height="100%" hidden></iframe>
     </div>
 </body>
 </html>
