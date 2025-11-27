@@ -38,6 +38,7 @@
             width: 800px;
             height: 600px;
             border: 0px solid #333;
+            transition: all 0.3s ease;
         }
     </style>
     <script>
@@ -62,12 +63,9 @@
             
             const closeButton = document.getElementById('openButton');
             closeButton.addEventListener('click', () => {
-                openIframe("https://lucberge.github.io/test_iframe/iframe.html");
-            });
-
-            const inputElement = document.getElementById('input_iframe_url');
-            inputElement.addEventListener('change', (event) => {
-                openIframe(event.target.value);
+                const inputValue = document.getElementById('input_iframe_url').value.trim();
+                const url = inputValue || "https://lucberge.github.io/test_iframe/iframe.html";
+                openIframe(url);
             });
         });
 
