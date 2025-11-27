@@ -88,7 +88,7 @@
                 else if (event.data.type === 'invoice-collector-panel-search') {
                     resizeIFrame('100%', '100%');
                 }
-                else if (event.data.type === 'invoice-collector-panel-collector') {
+                else if (event.data.type === 'invoice-collector-panel-form') {
                     resizeIFrame('100%', '100%');
                 }
                 else if (event.data.type === 'invoice-collector-panel-progress') {
@@ -96,6 +96,9 @@
                 }
                 else if (event.data.type === 'invoice-collector-panel-canvas') {
                     resizeIFrame('1200px', '600px');
+                }
+                else if (event.data.type === 'invoice-collector-panel-feedback') {
+                    resizeIFrame('500px', '500px');
                 }
             } else {
                 console.warn('Origin not allowed:', event.origin);
@@ -105,7 +108,7 @@
 </head>
 <body>
     <div id="container_actions">
-        <button id="openButton">Open default iframe</button>
+        <button id="openButton">Open iframe</button>
         <input id="input_iframe_url" />
     </div>
     <div id="container_iframe" style="display: none;">
