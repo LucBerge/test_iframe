@@ -13,7 +13,24 @@
             align-items: center;
             min-height: 100vh;
             background-color: #f0f0f0;
+            position: relative;
+        }
+        #container_actions {
+            display: flex;
             flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            z-index: 1;
+        }
+        #container_iframe {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         iframe {
             width: 800px;
@@ -30,13 +47,13 @@
         }
         function closeIFrame() {
             const iframe = document.getElementById('iframeid');
-            iframe.style.display = 'none';
+            iframe.hidden = true;
         }
         document.addEventListener('DOMContentLoaded', () => {
             const closeButton = document.getElementById('openButton');
             closeButton.addEventListener('click', () => {
                 const iframe = document.getElementById('iframeid');
-                iframe.style.display = 'flex';
+                iframe.hidden = false;
                 iframe.src = "https://lucberge.github.io/test_iframe/iframe.html";
             });
 
@@ -44,6 +61,7 @@
             inputElement.addEventListener('change', (event) => {
                 const iframe = document.getElementById('iframeid');
                 iframe.src = event.target.value;
+                iframe.hidden = false;
             });
         });
 
@@ -74,10 +92,12 @@
     </script>
 </head>
 <body>
-    <div id="actions">
+    <div id="container_actions">
         <button id="openButton">Open default iframe</button>
         <input id="input_iframe_url" />
     </div>
-    <iframe id="iframeid" title="Centered iFrame"></iframe>
+    <div id="container_iframe">
+        <iframe id="iframeid" title="Centered iFrame" hidden></iframe>
+    </div>
 </body>
 </html>
