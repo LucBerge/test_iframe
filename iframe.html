@@ -29,12 +29,12 @@
 
             const smallButton = document.getElementById('buttonSmall');
             smallButton.addEventListener('click', () => {
-                window.parent.postMessage({ type: 'invoice-collector-panel-canvas' }, '*');
+                window.parent.postMessage({ type: 'invoice-collector-panel-progress' }, '*');
             });
 
             const largeButton = document.getElementById('buttonLarge');
             largeButton.addEventListener('click', () => {
-                window.parent.postMessage({ type: 'invoice-collector-panel-progress' }, '*');
+                window.parent.postMessage({ type: 'invoice-collector-panel-canvas' }, '*');
             });
 
             const closeButton = document.getElementById('buttonClose');
