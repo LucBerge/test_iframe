@@ -24,17 +24,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             const fullButton = document.getElementById('buttonFull');
             fullButton.addEventListener('click', () => {
-                window.parent.postMessage({ type: 'invoice-collector-large' }, '*');
+                window.parent.postMessage({ type: 'invoice-collector-panel-search' }, '*');
             });
 
             const smallButton = document.getElementById('buttonSmall');
             smallButton.addEventListener('click', () => {
-                window.parent.postMessage({ type: 'invoice-collector-small' }, '*');
+                window.parent.postMessage({ type: 'invoice-collector-panel-canvas' }, '*');
             });
 
             const largeButton = document.getElementById('buttonLarge');
             largeButton.addEventListener('click', () => {
-                window.parent.postMessage({ type: 'invoice-collector-large' }, '*');
+                window.parent.postMessage({ type: 'invoice-collector-panel-progress' }, '*');
             });
 
             const closeButton = document.getElementById('buttonClose');
