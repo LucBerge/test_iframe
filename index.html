@@ -13,6 +13,7 @@
             align-items: center;
             min-height: 100vh;
             background-color: #f0f0f0;
+            flex-direction: column;
         }
         iframe {
             width: 800px;
@@ -22,26 +23,58 @@
         }
     </style>
     <script>
-        function resizeIFrame(height, width) {
+        function resizeIFrame(width, height) {
             const iframe = document.getElementById('iframeid');
-            iframe.style.width = width + 'px';
-            iframe.style.height = height + 'px';
+            iframe.style.width = width;
+            iframe.style.height = height;
         }
         function closeIFrame() {
             const iframe = document.getElementById('iframeid');
             iframe.style.display = 'none';
         }
         document.addEventListener('DOMContentLoaded', () => {
-            const closeButton = document.querySelector('#openButton');
+            const closeButton = document.getElementById('openButton');
             closeButton.addEventListener('click', () => {
                 const iframe = document.getElementById('iframeid');
                 iframe.style.display = 'flex';
             });
+
+            const inputElement = document.getElementById('input_iframe_url');
+            inputElement.addEventListener('change', (event) => {
+                const iframe = document.getElementById('iframeid');
+                iframe.src = event.target.value;
+            });
+        });
+
+        window.addEventListener('message', function(event) {
+            console.log('Message received from child:', event.data);
+
+            if (event.origin === "https://lucberge.github.io" || event.origin === "https://api.invoice-collector.com") {
+                if (event.data.type === 'invoice-collector-close') {
+                    closeIFrame();
+                    console.log('Iframe has been closed!');
+                }
+                else if (event.data.type === 'invoice-collector-panel-collector') {
+                    resizeIFrame('100vh', '100vh');
+                }
+                else if (event.data.type === 'invoice-collector-panel-search') {
+                    resizeIFrame('100vh', '100vh');
+                }
+                else if (event.data.type === 'invoice-collector-panel-progress') {
+                    resizeIFrame('500px', '500px');
+                }
+                else if (event.data.type === 'invoice-collector-panel-canva') {
+                    resizeIFrame('1200px', '900px');
+                }
+            } else {
+                console.warn('Origin not allowed:', event.origin);
+            }
         });
     </script>
 </head>
 <body>
     <button id="openButton">Open the iframe</button>
+    <input id="input_iframe_url" />
     <iframe id="iframeid" src="https://lucberge.github.io/test_iframe/iframe.html" title="Centered iFrame"></iframe>
 </body>
 </html>

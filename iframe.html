@@ -22,26 +22,32 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const closeButton = document.querySelector('#closeButton');
+            const fullButton = document.getElementById('buttonFull');
+            fullButton.addEventListener('click', () => {
+                window.parent.postMessage({ type: 'invoice-collector-large' }, '*');
+            });
+
+            const smallButton = document.getElementById('buttonSmall');
+            smallButton.addEventListener('click', () => {
+                window.parent.postMessage({ type: 'invoice-collector-small' }, '*');
+            });
+
+            const largeButton = document.getElementById('buttonLarge');
+            largeButton.addEventListener('click', () => {
+                window.parent.postMessage({ type: 'invoice-collector-large' }, '*');
+            });
+
+            const closeButton = document.getElementById('buttonClose');
             closeButton.addEventListener('click', () => {
-                parent.closeIFrame();
-            });
-
-            const resizePlusButton = document.querySelector('#resizePlusButton');
-            resizePlusButton.addEventListener('click', () => {
-                parent.resizeIFrame(700, 900);
-            });
-
-            const resizeMinusButton = document.querySelector('#resizeMinusButton');
-            resizeMinusButton.addEventListener('click', () => {
-                parent.resizeIFrame(500, 700);
+                window.parent.postMessage({ type: 'invoice-collector-close' }, '*');
             });
         });
     </script>
 </head>
 <body>
-    <button id="closeButton">Close the iframe</button>
-    <button id="resizePlusButton">Resize +</button>
-    <button id="resizeMinusButton">Resize -</button>
+    <button id="buttonFull">Full</button>
+    <button id="buttonLarge">Large</button>
+    <button id="buttonSmall">Small</button>
+    <button id="buttonClose">Close the iframe</button>
 </body>
 </html>
