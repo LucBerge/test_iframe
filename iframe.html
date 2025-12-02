@@ -24,22 +24,22 @@
         document.addEventListener('DOMContentLoaded', () => {
             const fullButton = document.getElementById('buttonFull');
             fullButton.addEventListener('click', () => {
-                window.parent.postMessage({ type: 'invoice-collector-panel-search' }, '*');
+                window.parent.postMessage({ type: 'ic-panel-search' }, '*');
             });
 
             const smallButton = document.getElementById('buttonSmall');
             smallButton.addEventListener('click', () => {
-                window.parent.postMessage({ type: 'invoice-collector-panel-progress' }, '*');
+                window.parent.postMessage({ type: 'ic-panel-progress' }, '*');
             });
 
             const largeButton = document.getElementById('buttonLarge');
             largeButton.addEventListener('click', () => {
-                window.parent.postMessage({ type: 'invoice-collector-panel-canvas' }, '*');
+                window.parent.postMessage({ type: 'ic-panel-canvas' }, '*');
             });
 
             const closeButton = document.getElementById('buttonClose');
             closeButton.addEventListener('click', () => {
-                window.parent.postMessage({ type: 'invoice-collector-close' }, '*');
+                window.parent.postMessage({ type: 'ic-close' }, '*');
             });
         });
     </script>
