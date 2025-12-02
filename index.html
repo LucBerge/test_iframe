@@ -58,33 +58,38 @@
         }
     </style>
     <script>
-        let containerIframe;
-        let iframe;
+        let ic_container;
+        let ic_iframe;
 
-        function resizeIFrame(width, height) {
-            iframe.style.width = width;
-            iframe.style.height = height;
-        }
-        function closeIFrame() {
-            containerIframe.style.display = 'none';
-        }
-        function openIframe(url) {
-            iframe.src = url;
-            resizeIFrame('100%', '100%');
-            containerIframe.style.display = 'flex';
-        }
+        /* Define what to do when the document is loaded */
+
         document.addEventListener('DOMContentLoaded', () => {
-            containerIframe = document.getElementById('ic-container');
+            ic_container = document.getElementById('ic-container');
             closeIFrame();
-            iframe = document.getElementById('ic-iframe');
+            ic_iframe = document.getElementById('ic-iframe');
             
-            const closeButton = document.getElementById('myapp-open');
-            closeButton.addEventListener('click', () => {
-                const inputValue = document.getElementById('myapp-input').value.trim();
-                const url = inputValue || "https://lucberge.github.io/test_iframe/iframe.html";
+            const myapp_open = document.getElementById('myapp-open');
+            myapp_open.addEventListener('click', () => {
+                const myapp_input = document.getElementById('myapp-input').value.trim();
+                const url = myapp_input || "https://lucberge.github.io/test_iframe/iframe.html";
                 openIframe(url);
             });
         });
+
+        /* Define what do to when a message is received from the iframe */
+
+        function resizeIFrame(width, height) {
+            ic_iframe.style.width = width;
+            ic_iframe.style.height = height;
+        }
+        function closeIFrame() {
+            ic_container.style.display = 'none';
+        }
+        function openIframe(url) {
+            ic_iframe.src = url;
+            resizeIFrame('100%', '100%');
+            ic_container.style.display = 'flex';
+        }
 
         window.addEventListener('message', function(event) {
             console.log('Message received from child:', event.data, 'from origin:', event.origin);
