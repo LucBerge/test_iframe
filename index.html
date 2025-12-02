@@ -95,7 +95,7 @@
             console.log('Message received from child:', event.data, 'from origin:', event.origin);
 
             if (event.origin === "https://lucberge.github.io" || event.origin === "https://api.invoice-collector.com" || event.origin === "http://localhost:8080") {
-                if (event.data.type === 'ic-collector-close') {
+                if (event.data.type === 'ic-close') {
                     closeIFrame();
                 }
                 else if (event.data.type === 'ic-panel-search') {
