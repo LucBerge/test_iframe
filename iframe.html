@@ -34,7 +34,7 @@
 
             const largeButton = document.getElementById('buttonLarge');
             largeButton.addEventListener('click', () => {
-                window.parent.postMessage({ type: 'ic-panel-canvas' }, '*');
+                window.parent.postMessage({ type: 'ic-panel-interactive' }, '*');
             });
 
             const closeButton = document.getElementById('buttonClose');
